@@ -7,6 +7,11 @@
 FROM python:3.7-slim-buster
 LABEL maintainer="Puckel_"
 
+# SET timezone to 'Asia/Shanghai'
+ENV TZ Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime \
+    && echo ${TZ} > /etc/timezone
+
 # Never prompt the user for choices on installation/configuration of packages
 ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
